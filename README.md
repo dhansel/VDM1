@@ -86,7 +86,7 @@ Note that the initial screen recreates the test pattern from page II-24 of the m
 Once you have verified that the VDM-1 produces a proper picture you can connect it to the
 Altair Simulator. There are two possible ways to connect:
 
-**Serial connection:**
+#### Serial connection
 
 Connect the VDM-1's serial connection to a serial port on the Altair Simulator. The VDM-1 needs 
 fast communication with the Altair to avoid slowing down the simulation, therefore the baud rate 
@@ -101,7 +101,7 @@ Simulator, go into the VDM-1 sub-menu and change the following:
 
 Now proceed to the **Using the VDM-1** section below.
 
-**USB connection:**
+#### USB connection
 
 If your pin 18/19 serial port is already used by a bluetooth module (or if you don't want
 to occupy a prescious serial port for the VDM-1) then you can connect the VDM-1 to the
