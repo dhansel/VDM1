@@ -28,9 +28,11 @@ you need to prepare it by uploading the latest firmware:
 As with the Dazzler project, I started this one with a pure (Windows) software implementation to test out
 whether the general idea works - especially the communication with the Altair Simulator. You can use the resulting
 application to try out the emulation without any additional hardware:
-1. Download the [VDM-1 application](/Windows/VDM1.exe)
+1. Download the [Windows VDM-1 application](/Windows/VDM1.exe)
 2. Start the VDM-1 application
-3. On the Altair Simulator, enter the configuration menu, go into the VDM-1 sub-menu and change the "Map to interface" setting to "Native USB"
+3. On the Altair Simulator, enter the configuration menu, go into the VDM-1 sub-menu 
+4. Change the "Map to interface" setting to "Native USB"
+5. Change the "Map keyboard to" setting to "SIO"
 4. Connect your computer to the Altair Simulator's **native** USB port
 
 After step 4, the VDM-1 application's title bar should show "(connected)" - if so then you're all set.
@@ -63,7 +65,7 @@ If you are using Composite output, please note:
 Note that the source code project for the new firmware is available in the [PIC32/firmware](/PIC32/firmware) directory.
 Use the free Microchip MPLAB X IDE to compile and upload to the PIC32.
 
-### Initial test
+### Initial hardware test
 
 After following the above instructions you should see a picture similar to the following 
 (the color may be different depending on the color jumper settings on the terminal):
@@ -111,8 +113,14 @@ but there are many [other](https://www.ebay.com/itm/New-USB-2-0-Type-A-Female-to
 Once the physical connection is established, enter the configuration menu on the Altair
 Simulator, go into the VDM-1 sub-menu and change the "Map to interface" setting to "USB Native Port".
 
-Now proceed to the **Using the VDM-1** section below.
-
 ## Using the VDM-1
 
-See [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
+As an initial test for the communication between Altair and VDM-1 you can start the
+CUTER for VDM-1 monitor software that is included in the Altair Simulator:
+
+* Make sure the VDM-1 is connected and the Altair Simulator is configured as described above
+* Set the SW7-0 switches to 00010000 (if you also have the Dazzler emulation enabled in the Simulator software then use 00011010).
+* Push AUX1 down
+* You should now see an empty screen with a ">" prompt at the top. For the software emulator, typing into the VDM-1 window should show the typed characters. Similarly, for the hardware emulator, typing on a keyboard connected to the VDM-1 should should show the typed characters.
+
+If that works, see [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
