@@ -1,6 +1,6 @@
 # VDM-1
 
-[Processor Technology VDM-1](http://www.s100computers.com/Hardware%20Folder/Processor%20Technology/VDM-1/VDM-1.htm) 
+This is a [Processor Technology VDM-1](http://www.s100computers.com/Hardware%20Folder/Processor%20Technology/VDM-1/VDM-1.htm) 
 emulator to be used with Altair 8800 Simulator project. For details about the simulator see:
 https://www.hackster.io/david-hansel/arduino-altair-8800-simulator-3594a6
 
