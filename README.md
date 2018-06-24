@@ -29,6 +29,9 @@ After step 4, the VDM-1 application's title bar should show "(connected)" - if s
 
 See [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
 
+Note that the source code for the software emulator is supplied in the "Windows" directory, 
+including a Visual Studio project set up to compile it.
+
 ## Hardware emulator
 
 Of course running the VDM-1 display as a Windows application is not very satisfying.
@@ -41,10 +44,15 @@ transforms any VGA or Composite monitor and a PS/2 keyboard into an instant-on V
 
 Once you have such a terminal, transforming it into a VDM-1 emulator is trivial:
 1. Download and extract the [Firmware Upgrage to V1.3](http://geoffg.net/Downloads/Terminal/Terminal_V1.3_UPGRADE.zip) from Geoff's website
-2. Follow the instructions in the Instructions.pdf file within that archive, **BUT** instead of using the Terminal_V1.3_UPGRADE.hex upgrade file, use the [VDM1-bootload.hex](/PIC32/firmware/VDM1-bootload.hex) file. Note that you can always revert the firmware to its original by following Geoff's instructions and for uploading the Terminal_V1.3_UPGRADE.hex file.
+2. Follow the instructions in the Instructions.pdf file within that archive, **BUT** instead of using the Terminal_V1.3_UPGRADE.hex upgrade file, use the [VDM1-bootload.hex](/PIC32/firmware/VDM1-bootload.hex) file. Note that you can always revert the firmware to its original by following Geoff's instructions and uploading the Terminal_V1.3_UPGRADE.hex file.
 3. Connect either the VGA output or the Composite output of the terminal hardware to a corresponding monitor and supply power to the terminal. 
 
+If you are using Composite output, please note:
+* The VDM-1 emulator firmware uses the "Baud Rate" jumper (JP1) "A" to determine whether to output NTSC or PAL. If the jumper is open then the output is NTSC, if it is closed, output is PAL.
+* The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels.
+
 After following the above instructions you should see a picture similar to the following:
+[Splash Screen](/doc/images/splash.png)
 
 If you also connect a keyboard you should be able to move the cursor around the screen and
 write onto the screen. The function keys modify the VDM-1's control register and DIP switches:
