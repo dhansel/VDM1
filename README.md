@@ -52,7 +52,7 @@ If you are using Composite output, please note:
 * The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels.
 
 After following the above instructions you should see a picture similar to the following:
-[Splash Screen](/doc/images/splash.png)
+![Splash Screen](/doc/images/splash.png)
 
 If you also connect a keyboard you should be able to move the cursor around the screen and
 write onto the screen. The function keys modify the VDM-1's control register and DIP switches:
