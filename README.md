@@ -23,7 +23,7 @@ you need to prepare it by uploading the latest firmware:
 2. In file config.h of the firmware, change "#define USE_VDM1 0" to "#define USE_VDM1 1"
 3. Upload the new firmware to the Altair Simulator (using the Arduino IDE)
 
-## Software emulator
+## Software VDM-1 emulator
 
 As with the Dazzler project, I started this one with a pure (Windows) software implementation to test out
 whether the general idea works - especially the communication with the Altair Simulator. You can use the resulting
@@ -41,7 +41,7 @@ You can proceed to the **Using the VDM-1** section below.
 Note that the source code for the software emulator is supplied in the [Windows](/Windows) directory, 
 including a Visual Studio project set up to compile it.
 
-## Hardware emulator
+## Hardware VDM-1 emulator
 
 Of course running the VDM-1 display as a Windows application is not very satisfying.
 One could as well run a whole software emulator (such as [Z80pack](https://www.autometer.de/unix4fun/z80pack/))
