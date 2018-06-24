@@ -42,6 +42,8 @@ If you don't already have one of [Geoff Graham's ASCII terminals](http://geoffg.
 recommend getting one. It is a very useful piece of hardware for anyone dabbling in retro-computing. It
 transforms any VGA or Composite monitor and a PS/2 keyboard into an instant-on Video terminal.
 
+### Updating the terminal firmware
+
 Once you have such a terminal, transforming it into a VDM-1 emulator is trivial:
 1. Download and extract the [Firmware Upgrage to V1.3](http://geoffg.net/Downloads/Terminal/Terminal_V1.3_UPGRADE.zip) from Geoff's website
 2. Follow the instructions in the Instructions.pdf file within that archive, **BUT** instead of using the Terminal_V1.3_UPGRADE.hex upgrade file, use the [VDM1-bootload.hex](/PIC32/firmware/VDM1-bootload.hex) file. Note that you can always revert the firmware to its original by following Geoff's instructions and uploading the Terminal_V1.3_UPGRADE.hex file.
@@ -50,6 +52,8 @@ Once you have such a terminal, transforming it into a VDM-1 emulator is trivial:
 If you are using Composite output, please note:
 * The VDM-1 emulator firmware uses the "Baud Rate" jumper (JP1) "A" to determine whether to output NTSC or PAL. If the jumper is open then the output is NTSC, if it is closed, output is PAL.
 * The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels. This should not be a problem for modern TVs but older TVs may show a washed-out picture.
+
+### Initial test
 
 After following the above instructions you should see a picture similar to the following 
 (the color may be different depending on the color jumper settings on the terminal):
@@ -65,3 +69,4 @@ write onto the screen. The function keys modify the VDM-1's control register and
 For the expected behavior of these switches, please refer to the [VDM-1 manual](/doc/vdm1.pdf).
 Note that the initial screen recreates the test pattern from page II-24 of the manual.
 
+### Connecting to the Altair Simulator
