@@ -44,8 +44,8 @@ including a Visual Studio project set up to compile it.
 ## Hardware VDM-1 emulator
 
 Of course running the VDM-1 display as a Windows application is not very satisfying.
-One could as well run a whole software emulator (such as [Z80pack](https://www.autometer.de/unix4fun/z80pack/))
-on the PC. Having a hardware solution would be very much preferable.
+You may as well run a whole software emulator (such as [Z80pack](https://www.autometer.de/unix4fun/z80pack/))
+on the PC. Having a hardware solution would be very much preferable for use with the (hardware) Altair Simulator.
 
 If you don't already have one of [Geoff Graham's ASCII terminals](http://geoffg.net/terminal.html) I highly
 recommend getting one. It is a very useful piece of hardware for anyone dabbling in retro-computing. It
