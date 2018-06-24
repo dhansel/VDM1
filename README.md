@@ -1,4 +1,4 @@
-# VDM-1
+# VDM-1 Emulator
 
 This is a [Processor Technology VDM-1](http://www.s100computers.com/Hardware%20Folder/Processor%20Technology/VDM-1/VDM-1.htm) 
 emulator to be used in conjunction with my [Altair 8800 Simulator project](https://www.hackster.io/david-hansel/arduino-altair-8800-simulator-3594a6).
@@ -16,6 +16,16 @@ Trek-80 version of Steve Dompier's Star Trek game showed some of the improvement
 ![Trek-80](/doc/images/trek80.gif)
 
 ## Software emulator (Windows)
+
+As with the Dazzler project, I started this one with a pure (Windows) software implementation to test out
+whether the general idea works - especially the communication with the Altair Simulator. You can use the resulting
+application to try out the emulation without any additional hardware:
+1. Update the Altair Simulator software to the latest version
+2. Download the [VDM-1 application](/Windows/VDM1.exe)
+3. Start the VDM-1 application
+4. Connect your computer to the Altair Simulator's **native** USB port
+After step 4, the VDM-1 application's title bar should show "(connected)" - you're all set.
+See [here](/programs/README.TXT) for information on how to load and run some VDM-1 software on the Altair.
 
 ## Hardware emulator (firmware for Video Terminal)
 
