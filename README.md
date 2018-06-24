@@ -15,7 +15,7 @@ Trek-80 version of Steve Dompier's Star Trek game showed some of the improvement
 
 ![Trek-80](/doc/images/trek80.gif)
 
-Other examples include [Target](/doc/images/target.gif) and [Raiders](/doc/images/raiders.gif) (Space Invaders clone)
+Other examples include Steve Dompier's [Target](/doc/images/target.gif) and [Raiders](/doc/images/raiders.gif) (Space Invaders clone)
 
 ## Updating the Altair Simulator firmware
 
