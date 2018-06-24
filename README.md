@@ -24,8 +24,9 @@ application to try out the emulation without any additional hardware:
 2. Download the [VDM-1 application](/Windows/VDM1.exe)
 3. Start the VDM-1 application
 4. Connect your computer to the Altair Simulator's **native** USB port
+
 After step 4, the VDM-1 application's title bar should show "(connected)" - you're all set.
-See [here](/programs/README.TXT) for information on how to load and run some VDM-1 software on the Altair.
+See [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
 
 ## Hardware emulator (firmware for Video Terminal)
 
