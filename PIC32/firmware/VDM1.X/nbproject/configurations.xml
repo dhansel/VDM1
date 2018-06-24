@@ -1055,11 +1055,6 @@
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
                    projectFiles="true">
-      <logicalFolder name="f1" displayName="system_config" projectFiles="true">
-        <logicalFolder name="f1" displayName="default" projectFiles="true">
-          <itemPath>../src/system_config/default/app_mx.ld</itemPath>
-        </logicalFolder>
-      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
