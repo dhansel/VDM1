@@ -11,8 +11,8 @@ since Geoff's hardware contains everything needed for the VDM-1, including a key
 
 The VDM-1 provides a 16 lines by 64 character display and was a popular card to be installed in an Altair
 back in the day. The capability of changing the picture by directly accessing the video memory allowed
-programs/games to make very fluid updates to the screen (compared to terminals). The Trek-80 version of
-Steve Dompier's Star Trek game showed the improvements that could be achieved using the VDM-1:
+programs/games to make very fluid updates to the screen (compared to regular ASCII terminals). The popular 
+Trek-80 version of Steve Dompier's Star Trek game showed some of the improvements that could be achieved using the VDM-1:
 
 ![Trek-80](/doc/images/trek80.gif)
 
