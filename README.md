@@ -52,14 +52,14 @@ If you are using Composite output, please note:
 * The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels. This should not be a problem for modern TVs but older TVs may show a washed-out picture.
 
 After following the above instructions you should see a picture similar to the following 
-(the color may be different depending on the color jumper settings on the terminal)
+(the color may be different depending on the color jumper settings on the terminal):
 ![Splash Screen](/doc/images/splash.png)
 
 If you also connect a keyboard you should be able to move the cursor around the screen and
 write onto the screen. The function keys modify the VDM-1's control register and DIP switches:
 
-* F1/F2: Decrease/increase the lower 4 bits of the control register
-* F3/F4: Decrease/increase the upper 4 bits of the control register
+* F1/F2: Decrease/increase the upper 4 bits of the control register
+* F3/F4: Decrease/increase the lower 4 bits of the control register
 * F5-F10: Toggle DIP switches 1-6
 
 For the expected behavior of these switches, please refer to the [VDM-1 manual](/doc/vdm1.pdf).
