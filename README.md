@@ -15,21 +15,28 @@ Trek-80 version of Steve Dompier's Star Trek game showed some of the improvement
 
 ![Trek-80](/doc/images/trek80.gif)
 
+## Updating the Altair Simulator firmware
+
+To prepare the Altair Simulator to communicate with either the software or hardware VDM-1 emulator
+you need to prepare it by uploading the latest firmware:
+1. Download the latest firmware from the Altair Simulator's [GIT repository](https://github.com/dhansel/Altair8800).
+2. In file config.h of the firmware, change "#define USE_VDM1 0" to "#define USE_VDM1 1"
+3. Upload the new firmware to the Altair Simulator (using the Arduino IDE)
+
 ## Software emulator
 
 As with the Dazzler project, I started this one with a pure (Windows) software implementation to test out
 whether the general idea works - especially the communication with the Altair Simulator. You can use the resulting
 application to try out the emulation without any additional hardware:
-1. Update the Altair Simulator software to the latest version
-2. Download the [VDM-1 application](/Windows/VDM1.exe)
-3. Start the VDM-1 application
+1. Download the [VDM-1 application](/Windows/VDM1.exe)
+2. Start the VDM-1 application
+3. On the Altair Simulator, enter the configuration menu, go into the VDM-1 sub-menu and change the "Map to interface" setting to "Native USB"
 4. Connect your computer to the Altair Simulator's **native** USB port
 
 After step 4, the VDM-1 application's title bar should show "(connected)" - if so then you're all set.
+You can proceed to the **Using the VDM-1** section below.
 
-See [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
-
-Note that the source code for the software emulator is supplied in the "Windows" directory, 
+Note that the source code for the software emulator is supplied in the [Windows](/Windows) directory, 
 including a Visual Studio project set up to compile it.
 
 ## Hardware emulator
@@ -53,6 +60,9 @@ If you are using Composite output, please note:
 * The VDM-1 emulator firmware uses the "Baud Rate" jumper (JP1) "A" to determine whether to output NTSC or PAL. If the jumper is open then the output is NTSC, if it is closed, output is PAL.
 * The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels. This should not be a problem for modern TVs but older TVs may show a washed-out picture.
 
+Note that the source code project for the new firmware is available in the [PIC32/firmware](/PIC32/firmware) directory.
+Use the free Microchip MPLAB X IDE to compile and upload to the PIC32.
+
 ### Initial test
 
 After following the above instructions you should see a picture similar to the following 
@@ -70,3 +80,24 @@ For the expected behavior of these switches, please refer to the [VDM-1 manual](
 Note that the initial screen recreates the test pattern from page II-24 of the manual.
 
 ### Connecting to the Altair Simulator
+
+Once you have verified that the VDM-1 produces a proper picture you can connect it to the
+Altair Simulator. There are two possible ways to connect:
+
+**Serial connection**
+
+Connect the VDM-1's serial connection to a serial port on the Altair Simulator. The VDM-1 needs 
+fast communication with the Altair to avoid slowing down the simulation, therefore the baud rate 
+on the VDM-1 is fixed to 750000 baud. This means that you need to use the pin 18/19 serial port.
+If you have modified your Arduino Due to fix the Pin 0/1 serial bug, in which case you can
+alternatively use pin 0/1 (programming port).
+
+After you have established the hardware connection, enter the configuration menu on the Altair
+Simulator, go into the VDM-1 sub-menu and change the "Map to interface" setting to the serial
+port that the VDM-1 is connected to.
+
+Now proceed to the **Using the VDM-1** section below.
+
+## Using the VDM-1
+
+See [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
