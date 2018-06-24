@@ -14,15 +14,16 @@ Each program is provided in four different formats
    cassette interface (such as Mike Douglas' cassette interface for the 
    Altair Clone) connected to one of the Simulator's serial ports.
 
-First step is to connect the VDM-1 display (either softwar or hardware) to the
-Simulator. 
+First step is to connect the VDM-1 display (either software or hardware) to the
+Simulator. Configure the VDM-1 emulation in the Simulator for the correct port
+that the display is connected to and set the "Map (k)eyboard to" setting to "SIO".
 
 Next you need to get CUTER running on the Simulator. There are several possibilities:
 
 1) When the Altair Simulator firmware is compiled with USE_VDM1 set to 1
-   (as it needs to be to support the VDM-1 emulation) then the "AUX1 down" list of
-   programs will have a "CUTER for VDM1" entry. Setting SW7-0 to given settings
-   for that program and pressing AUX1 down will run CUTER. 
+   (as it needs to be to support the VDM-1 emulation) then the "AUX1 down" list 
+   of programs will have a "CUTER for VDM1" entry. Set SW7-0 to the code listed
+   for that program and press AUX1 down to run CUTER. 
 
 2) Use the HEX upload mechanism in the Simulator: 
    * receive HEX file ('H' command or SW6 up and AUX1 down)
@@ -83,6 +84,11 @@ It should react to serial input received via the SIO device. If you
 have set up the VDM-1 in the configuration menu to forward keyboard
 input to the SIO device then characters typed on the keyboard should
 be recognized too.
+
+[Note that the CUTER version supplied here contains a small change such
+ that it starts up using SIO as its input device and VDM-1 as output device
+ (in the original the SENSE switches would determine the input and output
+ devices): Addresses C1E2-C1E3 were changed from DB FF to 3E 04]
 
 Once CUTER is running, you can now load one of the other programs,
 you can choose your preferred method:
