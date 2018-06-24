@@ -128,5 +128,5 @@ CUTER for VDM-1 monitor software that is included in the Altair Simulator:
 
 If that works, see [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
 
-The programs included in this repository were taken from **Udo Munk**'s fantastic collection of Altair
+The Altair software included in this repository was taken from **Udo Munk**'s fantastic collection of Altair
 (and other) software at [https://www.autometer.de/unix4fun/z80pack/ftp/altair/proctec-tapes](https://www.autometer.de/unix4fun/z80pack/ftp/altair/proctec-tapes).
