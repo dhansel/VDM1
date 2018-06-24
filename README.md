@@ -1,8 +1,7 @@
 # VDM-1
 
 This is a [Processor Technology VDM-1](http://www.s100computers.com/Hardware%20Folder/Processor%20Technology/VDM-1/VDM-1.htm) 
-emulator to be used with Altair 8800 Simulator project. For details about the simulator see:
-https://www.hackster.io/david-hansel/arduino-altair-8800-simulator-3594a6
+emulator to be used in conjunction with my [Altair 8800 Simulator project](https://www.hackster.io/david-hansel/arduino-altair-8800-simulator-3594a6).
 
 After finishing the [Dazzler display](https://www.hackster.io/david-hansel/dazzler-display-for-altair-simulator-3febc6)
 for the Altair Simulator I circled back to the Processor Technology VDM-1 display. It occurred to me that this could
