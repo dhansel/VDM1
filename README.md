@@ -127,5 +127,6 @@ CUTER for VDM-1 monitor software that is included in the Altair Simulator:
 * You should now see an empty screen with a ">" prompt at the top. For the software emulator, typing into the VDM-1 window should show the typed characters. Similarly, for the hardware emulator, typing on a keyboard connected to the VDM-1 should should show the typed characters.
 
 If that works, see [here](/programs) for information on how to load and run some VDM-1 software on the Altair.
+
 The programs included in this repository were taken from **Udo Munk**'s fantastic collection of Altair
-(and other) software at https://www.autometer.de/unix4fun/z80pack/ftp/altair/proctec-tapes
+(and other) software at [https://www.autometer.de/unix4fun/z80pack/ftp/altair/proctec-tapes](https://www.autometer.de/unix4fun/z80pack/ftp/altair/proctec-tapes).
