@@ -86,7 +86,7 @@ Note that the initial screen recreates the test pattern from page II-24 of the m
 Once you have verified that the VDM-1 produces a proper picture you can connect it to the
 Altair Simulator. There are two possible ways to connect:
 
-**Serial connection**
+**Serial connection:**
 
 Connect the VDM-1's serial connection to a serial port on the Altair Simulator. The VDM-1 needs 
 fast communication with the Altair to avoid slowing down the simulation, therefore the baud rate 
@@ -95,12 +95,13 @@ If you have modified your Arduino Due to fix the Pin 0/1 serial bug, in which ca
 alternatively use pin 0/1 (programming port).
 
 After you have established the physical connection, enter the configuration menu on the Altair
-Simulator, go into the VDM-1 sub-menu and change the "Map to interface" setting to the serial
-port that the VDM-1 is connected to.
+Simulator, go into the VDM-1 sub-menu and change the following:
+* Set the "Map to interface" setting to the serial port that the VDM-1 is connected to
+* Set the "Map keyboard to" setting to "SIO"
 
 Now proceed to the **Using the VDM-1** section below.
 
-**USB connection**
+**USB connection:**
 
 If your pin 18/19 serial port is already used by a bluetooth module (or if you don't want
 to occupy a prescious serial port for the VDM-1) then you can connect the VDM-1 to the
@@ -111,7 +112,9 @@ the VDM-1 you will need an adapter to convert the USB-B connector on the VDM-1 t
 but there are many [other](https://www.ebay.com/itm/New-USB-2-0-Type-A-Female-to-USB-B-Male-Adapter-Converter/291644209870?hash=item43e7597ace) [sellers](https://www.ebay.com/itm/2PCS-New-USB-2-0-Type-A-Female-to-USB-B-Male-Adapter-Converter-US-SHIPPING-M455/401544944647?hash=item5d7df19c07)).
 
 Once the physical connection is established, enter the configuration menu on the Altair
-Simulator, go into the VDM-1 sub-menu and change the "Map to interface" setting to "USB Native Port".
+Simulator, go into the VDM-1 sub-menu and and change the following:
+* Set the "Map to interface" setting to "USB Native Port"
+* Set the "Map keyboard to" setting to "SIO"
 
 ## Using the VDM-1
 
