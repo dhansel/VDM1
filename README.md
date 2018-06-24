@@ -49,7 +49,7 @@ Once you have such a terminal, transforming it into a VDM-1 emulator is trivial:
 
 If you are using Composite output, please note:
 * The VDM-1 emulator firmware uses the "Baud Rate" jumper (JP1) "A" to determine whether to output NTSC or PAL. If the jumper is open then the output is NTSC, if it is closed, output is PAL.
-* The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels.
+* The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels. This should not be a problem for modern TVs but older TVs may show a washed-out picture.
 
 After following the above instructions you should see a picture similar to the following 
 (the color may be different depending on the color jumper settings on the terminal)
