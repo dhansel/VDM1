@@ -51,7 +51,8 @@ If you are using Composite output, please note:
 * The VDM-1 emulator firmware uses the "Baud Rate" jumper (JP1) "A" to determine whether to output NTSC or PAL. If the jumper is open then the output is NTSC, if it is closed, output is PAL.
 * The VDM-1 outputs a picture of 576 horizontal pixels. You need to use a monitor that has the proper bandwidth/horizontal resolution to resolve that many pixels.
 
-After following the above instructions you should see a picture similar to the following:
+After following the above instructions you should see a picture similar to the following 
+(the color may be different depending on the color jumper settings on the terminal)
 ![Splash Screen](/doc/images/splash.png)
 
 If you also connect a keyboard you should be able to move the cursor around the screen and
