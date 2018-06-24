@@ -99,6 +99,9 @@ Simulator, go into the VDM-1 sub-menu and change the following:
 * Set the "Map to interface" setting to the serial port that the VDM-1 is connected to
 * Set the "Map keyboard to" setting to "SIO"
 
+Next, in the configuration menu, set 750000 (8N1) as the baud rate for the serial port that the VDM-1 is 
+connected to.
+
 Now proceed to the **Using the VDM-1** section below.
 
 #### USB connection
