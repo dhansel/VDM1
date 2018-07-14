@@ -127,7 +127,7 @@ As an initial test for the communication between Altair and VDM-1 you can start 
 CUTER for VDM-1 monitor software that is included in the Altair Simulator:
 
 * Make sure the VDM-1 is connected and the Altair Simulator is configured as described above
-* Set the SW7-0 switches to 00010000 (if you also have the Dazzler emulation enabled in the Simulator software then use 00011010).
+* Set the SW7-0 switches to 00010000 (if you also have the Dazzler emulation enabled in the Simulator software then use 00010001).
 * Push AUX1 down
 * You should now see an empty screen with a ">" prompt at the top. For the software emulator, typing into the VDM-1 window should show the typed characters. Similarly, for the hardware emulator, typing on a keyboard connected to the VDM-1 should should show the typed characters.
 
