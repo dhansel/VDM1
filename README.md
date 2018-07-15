@@ -1,14 +1,15 @@
-# VDM-1 Emulator
+# VDM-1 Simulator
 
 This is a [Processor Technology VDM-1](http://www.s100computers.com/Hardware%20Folder/Processor%20Technology/VDM-1/VDM-1.htm) 
-emulator to be used in conjunction with my [Altair 8800 Simulator project](https://www.hackster.io/david-hansel/arduino-altair-8800-simulator-3594a6).
+simulator to be used in conjunction with my [Altair 8800 Simulator project](https://www.hackster.io/david-hansel/arduino-altair-8800-simulator-3594a6).
 
 After finishing the [Dazzler display](https://www.hackster.io/david-hansel/dazzler-display-for-altair-simulator-3febc6)
 for the Altair Simulator I circled back to the Processor Technology VDM-1 display. It occurred to me that this could
 be done by just creating a new firmware for [Geoff Graham's ASCII Video Terminal](http://geoffg.net/terminal.html)
-since Geoff's hardware contains everything needed for the VDM-1, including a keyboard connection.
+since Geoff's hardware contains everything needed for the VDM-1, including a keyboard connection. I also realized
+that I could re-use a number of the lessons learned in the Dazzler display for this.
 
-The VDM-1 provides a 16 lines by 64 character display and was a popular card to be installed in an Altair
+The VDM-1 provided a 16 line by 64 character display and was a popular card to be installed in an Altair
 back in the day. The capability of changing the picture by directly accessing the video memory allowed
 programs/games to make very fluid updates to the screen (compared to regular ASCII terminals). The popular 
 Trek-80 version of Steve Dompier's Star Trek game showed some of the improvements that could be achieved using the VDM-1:
@@ -47,7 +48,7 @@ Of course running the VDM-1 display as a Windows application is not very satisfy
 You may as well run a whole software emulator (such as [Z80pack](https://www.autometer.de/unix4fun/z80pack/))
 on the PC. Having a hardware solution would be very much preferable for use with the (hardware) Altair Simulator.
 
-## Hardware VDM-1 emulator
+## Hardware VDM-1 simulator
 
 If you don't already have one of [Geoff Graham's ASCII terminals](http://geoffg.net/terminal.html) I highly
 recommend getting one. It is a very useful piece of hardware for anyone dabbling in retro-computing. It
@@ -55,7 +56,7 @@ transforms any VGA or Composite monitor and a PS/2 keyboard into an instant-on V
 
 ### Updating the terminal firmware
 
-Once you have such a terminal, transforming it into a VDM-1 emulator is trivial:
+Once you have such a terminal, transforming it into a VDM-1 simulator is trivial:
 1. Download and extract the [Firmware Upgrage to V1.3](http://geoffg.net/Downloads/Terminal/Terminal_V1.3_UPGRADE.zip) from Geoff's website
 2. Follow the instructions in the Instructions.pdf file within that archive, **BUT** instead of using the Terminal_V1.3_UPGRADE.hex upgrade file, use the [VDM1-bootload.hex](/PIC32/firmware/VDM1-bootload.hex) file. Note that you can always revert the firmware to its original by following Geoff's instructions and uploading the Terminal_V1.3_UPGRADE.hex file.
 3. Connect either the VGA output or the Composite output of the terminal hardware to a corresponding monitor and supply power to the terminal. 
