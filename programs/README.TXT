@@ -2,6 +2,10 @@ All programs here are supposed to run within the CUTER for VDM-1 monitor softwar
 The programs have been taken from Udo Munk's fantastic collection of Altair
 (and other) software: https://www.autometer.de/unix4fun/z80pack/ftp/altair/proctec-tapes
 
+Note that all these programs (and some more) are included in the DISK11.DSK disk image
+supplied with the Altair Simulator firmware. See the "VDM-1 Support" section in the 
+Altair Simulator documentation for more information on how to use this disk.
+
 Each program is provided in four different formats
 1) .ENT files: These are the "originals" from Udo's archive.
    They are text files in a format that can be pasted directly into
