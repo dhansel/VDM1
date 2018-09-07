@@ -9,13 +9,9 @@ There are two versions of the firmware available:
   using the free MPLAB X IPE software (comes with the MPLAB X IDE).
 
 To compile the firmware yourself:
-1. decide whether you want to generate the bootloader or programmer version. 
-2. In sub-folder VDM1.X/nbproject replace the content of configurations.xml with 
-   either that of configurations-bootload.xml or configurations-programmer.xml 
-   respectively.
-3. Start the MPLAB X IDE software and load the VDM1.X project.
+1. Start the MPLAB X IDE software and load the VDM1.X project.
+2. Select the configuration (bootload/programmer) you want to build
+3. build the project
 
 Note that when using the "bootload" configuration you will not be able to run
 or debug the code from within the MPLAB X IDE.
-
-By default, the "programmer" configuration is used.
