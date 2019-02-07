@@ -1,0 +1,108 @@
+The VDM1.DSK disk image contains a version of CP/M adapted
+to utilize the CUTER-for-VDM1 monitor's output routines
+for screen output. Input is read from port 1 of a 2-SIO card
+at address 10h/11h. The CUTER-for-VDM1 monitor must be
+present in RAM at C000h before booting the VDM1.DSK disk.
+Note that the memory at C000h must be writable because CP/M
+needs to slightly patch CUTER to use its output routines.
+
+The CUTER-for-VDM1 monitor can be found here:
+https://github.com/dhansel/VDM1/raw/master/programs/HEX/vdmcuter.hex
+
+
+Files on the VDM1.DSK disk image
+================================
+
+CHASE.COM
+  Game of Chase. Control keys shown on screen after starting.
+  Press Ctrl-C to return to CP/M.
+
+CHECKERS.COM
+  Play checkers against the computer. 
+  Press ESC to return to CP/M.
+
+CHESS.COM
+  Play chess against the computer. Instructions here:  
+  https://github.com/dhansel/VDM1/raw/master/doc/chess.pdf
+  Type ^X (two characters!) and Enter to concede the game and 
+  then "N" and Enter to return to CP/M.
+
+DEFLECT.COM
+  The goal is to direct the player icon to hit the target(s) 
+  by deflecting it using "/" and "\" characters.
+  At the start of the game press "\" to select one target 
+  or "/" to select three targets.  After that you have a 
+  limited amount of time to hit all targets on screen.
+  Place deflection barriers at your current position by 
+  pressing "/" or "\". The player icon will deflect 
+  accordingly. Once all targets are hit, "WINNER" will
+  be printed to the screen. After that, either press "\" 
+  to start over or "/" to get three new targets and keep
+  all barriers intact (but they get shifted one to the left).
+  Press Ctrl-C to return to CP/M.
+
+GALAXY.COM
+  Game contains rules explanation. ESC to return to CP/M.
+
+LIFE.COM
+  Conway's game of life. Press 'H' to see help screen.
+  Press Ctrl-C to return to CP/M.
+
+LIFE8.COM
+  Press '?' for help. Press 'X' to return to CP/M
+
+PATTERN.COM
+  Demo showing patterns on screen.
+  Press ESC to return to CP/M.
+
+PIRANHA.COM
+  Use the number keypad (1-9) to move around and avoid 
+  getting caught. Pressing a direction key twice goes fast 
+  in that direction, "." pauses the game, ESC restarts the 
+  game and allows to re-define movement keys. 
+  Press ESC twice to restart using the same keys.
+  Press Ctrl-A to return to CP/M
+
+PONG.COM
+  3 modes: S - single-player practice
+           W - practice against computer
+           P - play against computer
+  UP: I  /  DOWN: ,  / LEFT: J / RIGHT: L
+  Press Ctrl-C to return to CP/M.
+  
+RAIDERS.COM
+  Space invaders clone. Instructions on screen,
+  Press ESC to return to CP/M.
+
+TARGET.COM
+  Nice shooter game. Instructions on screen,
+  Press ESC to return to CP/M.
+
+TARGET1.COM
+  Very simple shooter game. Player is stationary, target
+  moves up and down. Press any key to fire.
+  Press Ctrl-C to return to CP/M.
+
+TRAIN.COM
+  Train animation. Press Ctrl-C to return to CP/M.
+
+TREK80.COM
+  Star trek game. Manual is here:
+  https://github.com/dhansel/VDM1/raw/master/doc/trk80.pdf
+  Must restart computer to return to CP/M.
+
+BASIC5.COM
+  BASIC from Processor Technology (1977)
+  Type "BYE" to return to CP/M.
+
+EXTBASIC.COM
+  Extended BASIC from Processor Technology (1977).
+  Type "BYE" to return to CP/M.
+
+MSBASIC.COM
+  G2 Extended BASIC for SOL (1978), (C) Microsoft
+  Type "BYE" to return to CP/M.
+
+BIOS.ASM
+  Source for modified CP/M bios to that uses CUTER output
+  routines to display on VDM-1.
