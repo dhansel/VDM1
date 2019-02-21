@@ -980,6 +980,7 @@ DWORD WINAPI serial_thread(void *data)
                   current_port = g_com_port;
                   current_baud = g_com_baud;
 
+                  Sleep(500);
                   byte b = VDM_CONNECT;
                   send(hwnd, &b, 1);
                 }
