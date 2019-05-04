@@ -97,6 +97,12 @@ on the VDM-1 is fixed to 750000 baud. This means that you need to use the pin 18
 If you have modified your Arduino Due to fix the Pin 0/1 serial bug, in which case you can
 alternatively use pin 0/1 (programming port).
 
+**Note:** On the terminal board there is a resistor between the RX line of the PIC (pin 5)
+and the RX connector on the board. This resistor is meant to allow voltages higer than 3.3V
+so the RX line so the terminal can support serial ports using higher voltages such as 5V or 12V. 
+The 750000 baud 3.3V signal coming from the Altair Simulator gets too degraded by that resistor
+for the serial connection to work. Either bypass the resistor with a wire or use the USB connection.
+
 After you have established the physical connection, enter the configuration menu on the Altair
 Simulator, go into the VDM-1 sub-menu and change the following:
 * Set the "Map to interface" setting to the serial port that the VDM-1 is connected to
