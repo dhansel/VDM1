@@ -99,7 +99,7 @@ alternatively use pin 0/1 (programming port).
 
 **Note:** On the terminal board there is a resistor between the RX line of the PIC (pin 5)
 and the RX connector on the board. This resistor is meant to allow voltages higer than 3.3V
-so the RX line so the terminal can support serial ports using higher voltages such as 5V or 12V. 
+on the RX line so the terminal can support serial ports using higher voltages such as 5V or 12V. 
 The 750000 baud 3.3V signal coming from the Altair Simulator gets too degraded by that resistor
 for the serial connection to work. Either bypass the resistor with a wire or use the USB connection.
 
