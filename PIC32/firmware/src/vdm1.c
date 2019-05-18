@@ -547,13 +547,10 @@ void __ISR(_OUTPUT_COMPARE_2_VECTOR, ipl7AUTO) IntHandlerOC2(void)
         }
   
       // DIP switches 5+6: CR/VT blanking
-      switch( vdm1_dip & 0x30 )
-        {
-           case 0x00: render_half_line = render_half_line_no_VTCR_blanking;   break;
-           case 0x10: render_half_line = render_half_line_with_VTCR_blanking; break;
-           case 0x20: render_half_line = render_half_line_with_VTCR_blanking; break;
-           case 0x30: render_half_line = render_half_line_no_VTCR_blanking;   break;
-        }
+      if( (vdm1_dip & 0x30)==0x30 )
+        render_half_line = render_half_line_no_VTCR_blanking;
+      else
+        render_half_line = render_half_line_with_VTCR_blanking;
     }
 
   // allow next interrupt

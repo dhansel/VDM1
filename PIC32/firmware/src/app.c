@@ -19,7 +19,6 @@
 
 
 #include "app.h"
-#include "charset.h"
 #include "vdm1.h"
 #include "keyboard.h"
 #include "peripheral/tmr/plib_tmr.h"
