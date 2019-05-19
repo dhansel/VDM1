@@ -314,11 +314,26 @@ inline void render_half_line_with_VTCR_blanking(int l, bool first, uint32_t *lbp
       
     lbe = lbp + 9;
     cce = cc + 32;
-    if( r < g_blank_before_row || g_blank_all || vblanked ) { memset(lbp, invert, 9*4); return; }
+    if( g_blank_all || vblanked )
+      { memset(lbp, invert, 9*4); return; }
+    else if( r < g_blank_before_row )
+      {
+        // on the last scanline of the character check if there
+        // is a VT blank character in this row (still counts)
+        if( (l%13)==12 )
+          {
+            while( (*cc&0x7f)!=11 && ++cc<cce );
+            if( (*cc&0x7f)==11 && cc<cce ) vblanked = true;
+          }
+
+        memset(lbp, invert, 9*4);
+        return;
+      }
+
+    --lbp;
     if( hblanked ) goto stop;
 
     // this could be done in a loop but it's faster like this    
-    --lbp;
     w  = cp[  *cc] << 23; if( (*cc&0x7f)==11 || (*cc&0x7f)==13 ) goto stop;
     w |= cp[*++cc] << 14; if( (*cc&0x7f)==11 || (*cc&0x7f)==13 ) goto stop;
     w |= cp[*++cc] <<  5; if( (*cc&0x7f)==11 || (*cc&0x7f)==13 ) goto stop;
@@ -379,8 +394,8 @@ inline void render_half_line_with_VTCR_blanking(int l, bool first, uint32_t *lbp
     // remember hblank for second half of line
     hblanked = true;
 
-    // if this is the second half of the last scan line of this character row then check VT blanking
-    if( (l%13)==12 && !first )
+    // if this is the last scan line of this character row then check VT blanking
+    if( (l%13)==12 )
     {
       // see whether there's a VT blank on the current line after a CR (still counts)
       while( (*cc&0x7f)!=11 && ++cc<cce );
@@ -423,7 +438,7 @@ static void schedule_dma_line(int line)
     {
       // for VGA we render 1/2 line per line shown (each line is shown twice)
       if( line<DISPLAY_LINES*2 ) 
-        render_half_line(line>>1, line&1, line & 2 ? linebuffer2 : linebuffer1);
+        render_half_line(line>>1, (line&1)==0, line & 2 ? linebuffer2 : linebuffer1);
     }
 }
 

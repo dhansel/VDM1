@@ -380,6 +380,14 @@ static void print_char(uint16_t c)
       toggle_dip(c-K_F5+1);
       //print_dip();
       break;
+
+    case K_F11:
+      set_char(cursor_row, cursor_col, 13);
+      break;
+
+    case K_F12:
+      set_char(cursor_row, cursor_col, 11);
+      break;
       
     default:
       if( c<0x100 )
