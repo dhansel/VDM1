@@ -80,6 +80,8 @@ write onto the screen. The function keys modify the VDM-1's control register and
 * F1/F2: Decrease/increase the upper 4 bits of the control register
 * F3/F4: Decrease/increase the lower 4 bits of the control register
 * F5-F10: Toggle DIP switches 1-6
+* F11: Place CR (ASCII 13) character at cursor position
+* F12: Place VT (ASCII 11) character at cursor position
 
 For the expected behavior of these switches, please refer to the [VDM-1 manual](/doc/vdm1.pdf).
 Note that the initial screen recreates the test pattern from page II-24 of the manual.
