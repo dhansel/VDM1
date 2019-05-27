@@ -394,12 +394,7 @@ uint16_t keyboard_get_key()
         }
         else if( b < 136 )
         {
-           if( ctrlL || ctrlR )
-           {
-             c = scancodes[b];
-             if( c>96 && c<123 ) c -= 96;
-           }
-           else if( shiftL || shiftR )
+           if( shiftL || shiftR )
              c = scancodes_shift[b];
            else
              c = scancodes[b];
@@ -425,6 +420,15 @@ uint16_t keyboard_get_key()
                case K_KP9: c = numLK ? '9' : K_PGUP; break;
                case K_KPD: c = numLK ? '.' : K_DEL;  break;
            }
+
+           // handle CTRL
+           if( ctrlL || ctrlR )
+             {
+               if( c>=64 && c<=95 )
+                 c -= 64;
+               else if( c>='a' && c<='z' )
+                 c -= 'a'-1;
+             }
         }
         
         // interpret character codes
