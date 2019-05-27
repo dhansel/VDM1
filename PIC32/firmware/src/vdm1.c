@@ -550,15 +550,15 @@ void __ISR(_OUTPUT_COMPARE_2_VECTOR, ipl7AUTO) IntHandlerOC2(void)
       // DIP switches 3+4: cursor handling
       switch( vdm1_dip & 0x0C )
         {
-           case 0x00: { charset = charset_nocursor; break; } 
-           case 0x04: { charset = charset_cursor; break; } 
+           case 0x00: { charset = charset_nocursor; break; }
+           case 0x04: { charset = charset_cursor; break; }
            case 0x08:
-           case 0xC0: 
+           case 0x0C:
            { 
                framecounter = (framecounter + 1) % 30;
                charset = framecounter<15 ? charset_cursor : charset_nocursor;
                break;
-           } 
+           }
         }
   
       // DIP switches 5+6: CR/VT blanking
