@@ -38,8 +38,8 @@ extern "C" {
 #define K_CSRR   0x0115
 #define K_PGUP   0x0116
 #define K_PGDN   0x0117
-#define K_INS    0x0118
-#define K_DEL    0x0119
+#define K_INS    0x0080 // INSERT key behaves as MODE SELECT on SOLOS keyboards
+#define K_DEL    0x007f // DELETE key sends DEL character
 #define K_PRSC   0x011A
     
 #define K_NONE   0xFFFF
