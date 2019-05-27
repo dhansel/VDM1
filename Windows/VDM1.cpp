@@ -980,7 +980,6 @@ DWORD WINAPI serial_thread(void *data)
                   current_port = g_com_port;
                   current_baud = g_com_baud;
 
-                  Sleep(500);
                   byte b = VDM_CONNECT;
                   send(hwnd, &b, 1);
                 }
@@ -1304,18 +1303,33 @@ LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 
     case WM_SYSCHAR:
       if( wParam==6 || (wParam==27 && (GetWindowLong(hwnd, GWL_STYLE)&WS_OVERLAPPEDWINDOW)==0) ) 
-      return 1;
+        return 1;
       break;
       
     case WM_CHAR: 
       {
         byte msg[2];
-        msg[0] = VDM_KEY;
-        msg[1] = wParam;
-        send(hwnd, msg, 2);
+        WCHAR uc = wParam;
+        if( 1==WideCharToMultiByte(CP_ACP, WC_NO_BEST_FIT_CHARS, &uc, 1, (LPSTR) (msg+1), 1, 0, NULL) )
+          {
+            msg[0] = VDM_KEY;
+            send(hwnd, msg, 2);
+          }
         break;
       }
       
+    case WM_KEYDOWN:
+      {
+        byte msg[2];
+        msg[0] = VDM_KEY;
+        switch( wParam )
+          {
+          case VK_INSERT: msg[1] = 0x80; send(hwnd, msg, 2); break;
+          case VK_DELETE: msg[1] = 0x7f; send(hwnd, msg, 2); break;
+          }
+        break;
+      }
+
     case WM_LBUTTONDBLCLK:
       {
         toggle_fullscreen(hwnd);
@@ -1495,7 +1509,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE, PWSTR pCmdLine, int nCmdShow
     find_com_ports(hwnd);     
     if( wcsncmp(pCmdLine, L"COM", 3)==0 && wcslen(pCmdLine)<7 )
       p = _wtoi(pCmdLine+3);
-    else 
+    else
       p = read_setting_dword(L"Port", g_com_port);
 
     if( p>0 && p<256 ) set_com_port(hwnd, p);
