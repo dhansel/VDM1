@@ -176,12 +176,14 @@ void vdm1_receive(uint8_t data)
 // -----------------------------------------------------------------------------
 
 
+#define RINGBUFFER_SIZE 0x01000 // must be a power of 2
 volatile uint32_t ringbuffer_start = 0, ringbuffer_end = 0;
-volatile uint8_t  ringbuffer[0x1000];
+uint8_t  ringbuffer[RINGBUFFER_SIZE];
 
-#define ringbuffer_full()     (((ringbuffer_end+1)&0x0fff) == ringbuffer_start)
-#define ringbuffer_empty()      (ringbuffer_start==ringbuffer_end)
-#define ringbuffer_available() ((ringbuffer_start-ringbuffer_end-1)&0x0fff)
+#define ringbuffer_full()                (((ringbuffer_end+1)&(RINGBUFFER_SIZE-1)) == ringbuffer_start)
+#define ringbuffer_empty()                 (ringbuffer_start==ringbuffer_end)
+#define ringbuffer_available_for_read()  (((ringbuffer_end+RINGBUFFER_SIZE)-ringbuffer_start)&(RINGBUFFER_SIZE-1))
+#define ringbuffer_available_for_write() (((ringbuffer_start+RINGBUFFER_SIZE)-ringbuffer_end-1)&(RINGBUFFER_SIZE-1))
 
 
 inline void ringbuffer_enqueue(uint8_t b)
@@ -414,10 +416,10 @@ void print_string(char *s)
 // -------------------------------- USB handlers -------------------------------
 // -----------------------------------------------------------------------------
 
-
+#define USB_INBUF_SIZE 512 // must be a multiple of 16
 static USB_HOST_CDC_OBJ    usbCdcObject     = NULL;
 static USB_HOST_CDC_HANDLE usbCdcHostHandle = USB_HOST_CDC_HANDLE_INVALID;
-static uint8_t usbInData[64], usb_keydata[2];
+static uint8_t usbInData[USB_INBUF_SIZE], usb_keydata[2];
 volatile bool usbBusy = false, usbSendConnect = false;
 
 
@@ -450,11 +452,12 @@ void usbScheduleTransfer()
     {
       // If there is space available in the ringbuffer then ask the client
       // to send more data. If there is no space then do not start another
-      // request until we have processed some data and space is available.
-      size_t avail = ringbuffer_available();
+      // request until we have processed some data and enough space is available
+      // to store at least one full 64-byte packet of USB traffic
+      size_t avail = ringbuffer_available_for_write() & ~0x3F;
       if( avail>0 ) 
         {
-          USB_HOST_CDC_Read(usbCdcHostHandle, NULL, usbInData, avail > 64 ? 64 : avail);
+          USB_HOST_CDC_Read(usbCdcHostHandle, NULL, usbInData, min(avail, USB_INBUF_SIZE));
           usbBusy = true;
         }
     }
@@ -483,9 +486,19 @@ USB_HOST_CDC_EVENT_RESPONSE USBHostCDCEventHandler(USB_HOST_CDC_HANDLE cdcHandle
           {
             // received data from the client => put it in the ringbuffer so it can
             // be processed when we get to it
-            size_t i;
-            for(i=0; i<readCompleteEventData->length; i++)
-              ringbuffer_enqueue(usbInData[i]);
+            size_t len = readCompleteEventData->length;
+            if( ringbuffer_end+len < RINGBUFFER_SIZE )
+              {
+                memcpy(ringbuffer+ringbuffer_end, usbInData, len);
+                ringbuffer_end += len;
+              }
+            else
+              {
+                size_t len2 = RINGBUFFER_SIZE-ringbuffer_end;
+                memcpy(ringbuffer+ringbuffer_end, usbInData, len2);
+                memcpy(ringbuffer, usbInData+len2, len-len2);
+                ringbuffer_end = len-len2;
+              }
           }
 
         // transfer is finished => schedule the next transfer
@@ -526,9 +539,20 @@ bool usbTasks()
             {
               // succeeded opening the device => all further processing is in event handler
               USB_HOST_CDC_EventHandlerSet(usbCdcHostHandle, USBHostCDCEventHandler, (uintptr_t)0);
-          
+
+              // set the line coding: 115200 baud 8N1
+              // These settings will be ignored if connected to the
+              // Due's Native USB port but will be used when connected to
+              // the Programming USB port, so the port in the Simulator needs
+              // to be set accordingly. The baud rate of 115200 is the highest
+              // baud rate that the 16U2 serial-to-usb converter can sustain
+              // without introducing errors. Tested 250000 which can be exactly
+              // matched by both the SAM3X and 16U2 yet shows transmit errors.
+              static USB_CDC_LINE_CODING coding = {115200, 0, 0, 8};
+              USB_HOST_CDC_ACM_LineCodingSet(usbCdcHostHandle, NULL, &coding);
+
               // request data
-              USB_HOST_CDC_Read(usbCdcHostHandle, NULL, usbInData, 64);
+              USB_HOST_CDC_Read(usbCdcHostHandle, NULL, usbInData, USB_INBUF_SIZE);
             }
         }
     }
