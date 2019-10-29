@@ -545,9 +545,9 @@ bool usbTasks()
               // Due's Native USB port but will be used when connected to
               // the Programming USB port, so the port in the Simulator needs
               // to be set accordingly. The baud rate of 115200 is the highest
-              // baud rate that the 16U2 serial-to-usb converter can sustain
-              // without introducing errors. Tested 250000 which can be exactly
-              // matched by both the SAM3X and 16U2 yet shows transmit errors.
+              // baud rate for which the 16U2 serial-to-usb converter can sustain
+              // bi-directional traffic without introducing errors, see here:
+              // https://github.com/arduino/ArduinoCore-avr/issues/296
               static USB_CDC_LINE_CODING coding = {115200, 0, 0, 8};
               USB_HOST_CDC_ACM_LineCodingSet(usbCdcHostHandle, NULL, &coding);
 
